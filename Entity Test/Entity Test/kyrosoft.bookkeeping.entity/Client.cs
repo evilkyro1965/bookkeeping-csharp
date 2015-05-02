@@ -16,19 +16,31 @@ namespace kyrosoft.bookkeeping.entity
         {
             contacts = new List<ClientContact>();
         }
+
+        [Required]
         public string clientName { get; set; }
+        
+        [Required]
         public string address { get; set; }
         public string addressLine2 { get; set; }
+        
+        [Required]
         public string city { get; set; }
+
+        [Required]
         public string state { get; set; }
         public string zip { get; set; }
+
+        [Required]
         public Country country { get; set; }
         public string websiteAddress { get; set; }
+
+        [Required]
         public string email { get; set; }
         public string clientNotes { get; set; }
         public double hourlyRate { get; set; }
 
-        public List<ClientContact> contacts { get; set; }
+        public virtual List<ClientContact> contacts { get; set; }
 
     }
 }

@@ -11,6 +11,7 @@ namespace kyrosoft.bookkeeping.entity
     [Table("country")]
     public class Country: IdentifiableEntity
     {
+        [Required]
         public string name { get; set; }
     }
 }

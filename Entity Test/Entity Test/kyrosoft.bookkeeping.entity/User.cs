@@ -12,7 +12,10 @@ namespace kyrosoft.bookkeeping.entity
     [Table("user")]
     public class User:IdentifiableEntity
     {
+        [Required]
         public String username { get; set; }
+        
+        [Required]
         public String password { get; set; }
     }
 }
