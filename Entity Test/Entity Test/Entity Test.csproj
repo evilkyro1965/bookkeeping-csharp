@@ -38,6 +38,15 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data">
       <HintPath>..\packages\MySql.Data.6.9.6\lib\net45\MySql.Data.dll</HintPath>
     </Reference>
@@ -73,6 +82,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="kyrosoft.bookkeeping.dao.test\AllTests.cs" />
+    <Compile Include="kyrosoft.bookkeeping.dao.test\UserDaoTest.cs" />
+    <Compile Include="kyrosoft.bookkeeping.dao\BaseDao.cs" />
+    <Compile Include="kyrosoft.bookkeeping.dao\IBaseDao.cs" />
+    <Compile Include="kyrosoft.bookkeeping.dao\IUserDao.cs" />
+    <Compile Include="kyrosoft.bookkeeping.dao\UserDao.cs" />
     <Compile Include="kyrosoft.bookkeeping.entity.test\ClientTest.cs" />
     <Compile Include="kyrosoft.bookkeeping.entity.test\ExpenseCategoryTest.cs" />
     <Compile Include="kyrosoft.bookkeeping.entity.test\ExpenseTest.cs" />
@@ -106,6 +121,7 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

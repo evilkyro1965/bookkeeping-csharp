@@ -7,7 +7,7 @@ using System.Data.Entity;
 
 namespace kyrosoft.bookkeeping.entity
 {
-    class DaoContext:DbContext
+    public class DaoContext:DbContext
     {
         public DaoContext() : base(nameOrConnectionString: "bookkeeping") { }
 
