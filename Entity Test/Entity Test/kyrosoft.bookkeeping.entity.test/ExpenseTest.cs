@@ -20,7 +20,7 @@ namespace kyrosoft.bookkeeping.entity.test
             ExpenseCategory expenseCategory = context.ExpenseCategories.Find(1);
 
             Expense expense = new Expense();
-            expense.name = "expense1";
+            expense.name = "Expense1";
             expense.date = new DateTime(2008, 3, 9, 16, 5, 7, 123);
             expense.description = "lorem ipsum";
             expense.expenseCategory = expenseCategory;

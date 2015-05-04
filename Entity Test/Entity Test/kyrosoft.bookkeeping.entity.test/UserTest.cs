@@ -18,8 +18,8 @@ namespace kyrosoft.bookkeeping.entity.test
             var context = new DaoContext();
 
             User user = new User();
-            user.username = "fahrur";
-            user.password = "drowssap";
+            user.username = "john.doe";
+            user.password = "password";
             context.Users.Add(user);
             context.SaveChanges();
         }

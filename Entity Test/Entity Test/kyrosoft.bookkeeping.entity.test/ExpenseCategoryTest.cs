@@ -19,13 +19,13 @@ namespace kyrosoft.bookkeeping.entity.test
             TaxCategory tax = context.TaxCategories.Find(1);
 
             ExpenseCategory expenseCategory = new ExpenseCategory();
-            expenseCategory.name = "expense1";
+            expenseCategory.name = "Expense1";
             expenseCategory.user = user;
             expenseCategory.taxCategory = tax;
             expenseCategory.expenseType = IncomeExpenseType.BUSINESS;
             expenseCategory.createdBy = "john.doe";
             expenseCategory.createdDate = new DateTime(2008, 3, 9, 16, 5, 7, 123);
-            expenseCategory.updatedBy = "john.doe2";
+            expenseCategory.updatedBy = "john.doe";
             expenseCategory.updatedDate = new DateTime(2011, 3, 9, 16, 5, 7, 123);
             context.ExpenseCategories.Add(expenseCategory);
             context.SaveChanges();

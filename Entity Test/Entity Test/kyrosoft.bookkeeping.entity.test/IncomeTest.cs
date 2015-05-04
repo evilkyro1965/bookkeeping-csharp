@@ -19,7 +19,7 @@ namespace kyrosoft.bookkeeping.entity.test
             IncomeCategory incomeCategory = context.IncomeCategories.Find(1);
 
             Income income = new Income();
-            income.name = "income1";
+            income.name = "Income1";
             income.date = new DateTime(2008, 3, 9, 16, 5, 7, 123);
             income.description = "lorem ipsum";
             income.incomeCategory = incomeCategory;

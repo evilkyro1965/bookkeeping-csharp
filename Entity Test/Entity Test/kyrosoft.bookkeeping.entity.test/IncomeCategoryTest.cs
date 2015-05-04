@@ -19,13 +19,13 @@ namespace kyrosoft.bookkeeping.entity.test
             TaxCategory tax = context.TaxCategories.Find(1);
 
             IncomeCategory incomeCategory = new IncomeCategory();
-            incomeCategory.name = "income1";
+            incomeCategory.name = "Income1";
             incomeCategory.user = user;
             incomeCategory.taxCategory = tax;
             incomeCategory.incomeType = IncomeExpenseType.BUSINESS;
             incomeCategory.createdBy = "john.doe";
             incomeCategory.createdDate = new DateTime(2008, 3, 9, 1, 2, 3);
-            incomeCategory.updatedBy = "john.doe2";
+            incomeCategory.updatedBy = "john.doe";
             incomeCategory.updatedDate = new DateTime(2008, 3, 9, 1, 2, 3);
             incomeCategory.isDisabled = false;
             context.IncomeCategories.Add(incomeCategory);

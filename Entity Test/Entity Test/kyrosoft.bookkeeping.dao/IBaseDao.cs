@@ -8,6 +8,9 @@ namespace kyrosoft.bookkeeping.dao
 {
     public interface IBaseDao<T>
     {
-        void add(T entity);
+        void create(T entity);
+        void update(T entity);
+        void delete(int[] ids);
+        T get(int id);
     }
 }
