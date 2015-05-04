@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using kyrosoft.bookkeeping.entity;
+using System.Data.SqlClient;
 
 namespace kyrosoft.bookkeeping.dao
 {
@@ -11,8 +12,14 @@ namespace kyrosoft.bookkeeping.dao
     {
         public void add(User user)
         {
-            daoContext.Users.Add(user);
-            daoContext.SaveChanges();
+            try { 
+                daoContext.Users.Add(user);
+                daoContext.SaveChanges();
+            }
+            catch (SqlException e)
+            {
+                throw e;
+            }
         }
     }
 }

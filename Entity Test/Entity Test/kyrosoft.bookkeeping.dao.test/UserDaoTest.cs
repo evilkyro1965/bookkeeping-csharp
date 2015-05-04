@@ -29,5 +29,6 @@ namespace kyrosoft.bookkeeping.dao.test
             user.password = "12345";
             userDao.add(user);
         }
+
     }
 }

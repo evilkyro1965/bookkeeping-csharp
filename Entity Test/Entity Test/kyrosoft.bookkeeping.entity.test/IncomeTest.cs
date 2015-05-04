@@ -16,7 +16,7 @@ namespace kyrosoft.bookkeeping.entity.test
             var context = new DaoContext();
 
             User user = context.Users.Find(1);
-            IncomeCategory incomeCategory = context.IncomeCategories.Find(2);
+            IncomeCategory incomeCategory = context.IncomeCategories.Find(1);
 
             Income income = new Income();
             income.name = "income1";
@@ -27,6 +27,7 @@ namespace kyrosoft.bookkeeping.entity.test
             income.user = user;
             context.Incomes.Add(income);
             context.SaveChanges();
+
         }
     }
 }

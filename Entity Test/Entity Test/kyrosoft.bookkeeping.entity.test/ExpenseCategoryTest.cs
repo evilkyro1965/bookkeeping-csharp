@@ -16,7 +16,7 @@ namespace kyrosoft.bookkeeping.entity.test
             var context = new DaoContext();
 
             User user = context.Users.Find(1);
-            TaxCategory tax = context.TaxCategories.Find(2);
+            TaxCategory tax = context.TaxCategories.Find(1);
 
             ExpenseCategory expenseCategory = new ExpenseCategory();
             expenseCategory.name = "expense1";

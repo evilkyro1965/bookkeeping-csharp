@@ -11,9 +11,9 @@ namespace kyrosoft.bookkeeping.entity
     [Table("income_category")]
     public class IncomeCategory:DisableEntity
     {
-        [Required]
+        [Column("incomeType")]
         public IncomeExpenseType incomeType { get; set; }
-        [Required]
-        public TaxCategory taxCategory { get; set; }
+
+        public virtual TaxCategory taxCategory { get; set; }
     }
 }

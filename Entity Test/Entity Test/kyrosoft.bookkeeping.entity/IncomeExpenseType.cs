@@ -8,7 +8,7 @@ namespace kyrosoft.bookkeeping.entity
 {
     public enum IncomeExpenseType
     {
-        BUSINESS = 1,
-        NON_BUSINESS = 2
+        BUSINESS,
+        NON_BUSINESS
     }
 }

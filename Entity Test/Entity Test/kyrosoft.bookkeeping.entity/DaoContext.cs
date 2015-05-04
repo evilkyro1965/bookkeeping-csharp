@@ -39,48 +39,48 @@ namespace kyrosoft.bookkeeping.entity
                 .WillCascadeOnDelete(true);
 
             modelBuilder.Entity<TaxCategory>()
-                .HasOptional<User>(t => t.user)
-                .WithOptionalDependent()
+                .HasRequired<User>(t => t.user)
+                .WithMany()
                 .Map(m => m.MapKey("userId"));
 
             modelBuilder.Entity<IncomeCategory>()
-                .HasOptional<User>(i => i.user)
-                .WithOptionalDependent()
+                .HasRequired<User>(i => i.user)
+                .WithMany()
                 .Map(m => m.MapKey("userId"));
 
             modelBuilder.Entity<IncomeCategory>()
-                .HasOptional<TaxCategory>(i => i.taxCategory)
-                .WithOptionalDependent()
+                .HasRequired<TaxCategory>(i => i.taxCategory)
+                .WithMany()
                 .Map(m => m.MapKey("taxCategoryId"));
 
             modelBuilder.Entity<ExpenseCategory>()
-                .HasOptional<User>(e => e.user)
-                .WithOptionalDependent()
+                .HasRequired<User>(e => e.user)
+                .WithMany()
                 .Map(m => m.MapKey("userId"));
 
             modelBuilder.Entity<ExpenseCategory>()
-                .HasOptional<TaxCategory>(e => e.taxCategory)
-                .WithOptionalDependent()
+                .HasRequired<TaxCategory>(e => e.taxCategory)
+                .WithMany()
                 .Map(m => m.MapKey("taxCategoryId"));
 
             modelBuilder.Entity<Income>()
-                .HasOptional<IncomeCategory>(i => i.incomeCategory)
-                .WithOptionalDependent()
+                .HasRequired<IncomeCategory>(i => i.incomeCategory)
+                .WithMany()
                 .Map(m => m.MapKey("incomeCategoryId"));
 
             modelBuilder.Entity<Income>()
-                .HasOptional<User>(e => e.user)
-                .WithOptionalDependent()
+                .HasRequired<User>(i => i.user)
+                .WithMany()
                 .Map(m => m.MapKey("userId"));
 
             modelBuilder.Entity<Expense>()
-                .HasOptional<ExpenseCategory>(e => e.expenseCategory)
-                .WithOptionalDependent()
+                .HasRequired<ExpenseCategory>(e => e.expenseCategory)
+                .WithMany()
                 .Map(m => m.MapKey("expenseCategoryId"));
 
             modelBuilder.Entity<Expense>()
-                .HasOptional<User>(e => e.user)
-                .WithOptionalDependent()
+                .HasRequired<User>(e => e.user)
+                .WithMany()
                 .Map(m => m.MapKey("userId"));
 
         }

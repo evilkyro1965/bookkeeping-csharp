@@ -21,9 +21,10 @@ namespace kyrosoft.bookkeeping.entity.test
             taxCategory.name = "test";
             taxCategory.user = user;
             taxCategory.createdBy = "john.doe";
-            taxCategory.createdDate = new DateTime(2008, 3, 9, 16, 5, 7, 123);
+            taxCategory.createdDate = new DateTime(2008, 3, 9, 1, 2, 3);
             taxCategory.updatedBy = "john.doe2";
-            taxCategory.updatedDate = new DateTime(2011, 3, 9, 16, 5, 7, 123); 
+            taxCategory.updatedDate = new DateTime(2008, 3, 9, 1, 2, 3);
+            taxCategory.isDisabled = false;
             context.TaxCategories.Add(taxCategory);
             context.SaveChanges();
 

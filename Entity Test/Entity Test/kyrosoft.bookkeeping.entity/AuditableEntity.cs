@@ -12,11 +12,11 @@ namespace kyrosoft.bookkeeping.entity
     {
         [Required]
         public string createdBy { get; set; }
-        [Required]
+
         public DateTime createdDate { get; set; }
         [Required]
         public string updatedBy { get; set; }
-        [Required]
+
         public DateTime updatedDate { get; set; }
 
     }
