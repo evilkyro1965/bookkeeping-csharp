@@ -13,7 +13,7 @@ namespace kyrosoft.bookkeeping.entity
     {
         public DateTime date { get; set; }
         public string description { get; set; }
-        public IncomeCategory incomeCategory { get; set; }
+        public virtual IncomeCategory incomeCategory { get; set; }
         public double amount { get; set; }
     }
 }

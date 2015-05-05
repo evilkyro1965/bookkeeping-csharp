@@ -15,6 +15,6 @@ namespace kyrosoft.bookkeeping.entity
         [Required]
         public IncomeExpenseType expenseType { get; set; }
         [Required]
-        public TaxCategory taxCategory { get; set; }
+        public virtual TaxCategory taxCategory { get; set; }
     }
 }

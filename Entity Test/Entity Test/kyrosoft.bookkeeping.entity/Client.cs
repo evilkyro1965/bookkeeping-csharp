@@ -32,7 +32,7 @@ namespace kyrosoft.bookkeeping.entity
         public string zip { get; set; }
 
         [Required]
-        public Country country { get; set; }
+        public virtual Country country { get; set; }
         public string websiteAddress { get; set; }
 
         [Required]

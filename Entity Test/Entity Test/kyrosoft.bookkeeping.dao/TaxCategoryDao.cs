@@ -9,12 +9,13 @@ using System.Data.Entity;
 
 namespace kyrosoft.bookkeeping.dao
 {
-    public class UserDao : BaseDao<User>,IUserDao
+    public class TaxCategoryDao: BaseDao<TaxCategory>, ITaxCategoryDao
     {
-        public void create(User user)
+        public void create(TaxCategory taxCategory)
         {
-            try { 
-                daoContext.Users.Add(user);
+            try
+            {
+                daoContext.TaxCategories.Add(taxCategory);
                 daoContext.SaveChanges();
             }
             catch (SqlException e)
@@ -23,11 +24,11 @@ namespace kyrosoft.bookkeeping.dao
             }
         }
 
-        public void update(User user)
+        public void update(TaxCategory taxCategory)
         {
             try
             {
-                var entry = daoContext.Entry(user);
+                var entry = daoContext.Entry<TaxCategory>(taxCategory);
                 entry.State = EntityState.Modified;
                 daoContext.SaveChanges();
             }
@@ -43,10 +44,10 @@ namespace kyrosoft.bookkeeping.dao
             {
                 for (int i = 0; i < ids.Length; i++)
                 {
-                    User user = daoContext.Users.Find(ids[i]);
-                    if(user==null)
-                        throw new Exception("User with id:"+ids[i]+" is not found!");
-                    daoContext.Users.Remove(user);
+                    TaxCategory taxCat = daoContext.TaxCategories.Find(ids[i]);
+                    if (taxCat == null)
+                        throw new Exception("Tax Category with id:" + ids[i] + " is not found!");
+                    daoContext.TaxCategories.Remove(taxCat);
                     daoContext.SaveChanges();
                 }
             }
@@ -56,17 +57,18 @@ namespace kyrosoft.bookkeeping.dao
             }
         }
 
-        public User get(int id)
+        public TaxCategory get(int id)
         {
             try
             {
-                User user = daoContext.Users.Find(id);
-                return user;
+                TaxCategory taxCat = daoContext.TaxCategories.Find(id);
+                return taxCat;
             }
             catch (SqlException e)
             {
                 throw e;
             }
         }
+
     }
 }

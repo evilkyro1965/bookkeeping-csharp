@@ -9,12 +9,13 @@ using System.Data.Entity;
 
 namespace kyrosoft.bookkeeping.dao
 {
-    public class UserDao : BaseDao<User>,IUserDao
+    public class ExpenseCategoryDao:BaseDao<ExpenseCategory>,IExpenseCategoryDao
     {
-        public void create(User user)
+        public void create(ExpenseCategory expenseCategory)
         {
-            try { 
-                daoContext.Users.Add(user);
+            try
+            {
+                daoContext.ExpenseCategories.Add(expenseCategory);
                 daoContext.SaveChanges();
             }
             catch (SqlException e)
@@ -23,11 +24,11 @@ namespace kyrosoft.bookkeeping.dao
             }
         }
 
-        public void update(User user)
+        public void update(ExpenseCategory expenseCategory)
         {
             try
             {
-                var entry = daoContext.Entry(user);
+                var entry = daoContext.Entry<ExpenseCategory>(expenseCategory);
                 entry.State = EntityState.Modified;
                 daoContext.SaveChanges();
             }
@@ -43,10 +44,10 @@ namespace kyrosoft.bookkeeping.dao
             {
                 for (int i = 0; i < ids.Length; i++)
                 {
-                    User user = daoContext.Users.Find(ids[i]);
-                    if(user==null)
-                        throw new Exception("User with id:"+ids[i]+" is not found!");
-                    daoContext.Users.Remove(user);
+                    ExpenseCategory expenseCategory = daoContext.ExpenseCategories.Find(ids[i]);
+                    if (expenseCategory == null)
+                        throw new Exception("Expense Category with id:" + ids[i] + " is not found!");
+                    daoContext.ExpenseCategories.Remove(expenseCategory);
                     daoContext.SaveChanges();
                 }
             }
@@ -56,12 +57,12 @@ namespace kyrosoft.bookkeeping.dao
             }
         }
 
-        public User get(int id)
+        public ExpenseCategory get(int id)
         {
             try
             {
-                User user = daoContext.Users.Find(id);
-                return user;
+                ExpenseCategory expenseCategory = daoContext.ExpenseCategories.Find(id);
+                return expenseCategory;
             }
             catch (SqlException e)
             {

@@ -55,13 +55,16 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.Unity">
+    <Reference Include="Microsoft.Practices.Unity, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.Unity.Configuration">
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention">
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
@@ -103,10 +106,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="kyrosoft.bookkeeping.dao.test\BaseTest.cs" />
+    <Compile Include="kyrosoft.bookkeeping.dao.test\ClientDaoTest.cs" />
+    <Compile Include="kyrosoft.bookkeeping.dao.test\ExpenseCategoryDaoTest.cs" />
+    <Compile Include="kyrosoft.bookkeeping.dao.test\ExpenseDaoTest.cs" />
+    <Compile Include="kyrosoft.bookkeeping.dao.test\IncomeCategoryDaoTest.cs" />
+    <Compile Include="kyrosoft.bookkeeping.dao.test\IncomeDaoTest.cs" />
+    <Compile Include="kyrosoft.bookkeeping.dao.test\TaxCategoryDaoTest.cs" />
     <Compile Include="kyrosoft.bookkeeping.dao.test\UserDaoTest.cs" />
     <Compile Include="kyrosoft.bookkeeping.dao\BaseDao.cs" />
+    <Compile Include="kyrosoft.bookkeeping.dao\ClientDao.cs" />
+    <Compile Include="kyrosoft.bookkeeping.dao\ExpenseCategoryDao.cs" />
+    <Compile Include="kyrosoft.bookkeeping.dao\ExpenseDao.cs" />
     <Compile Include="kyrosoft.bookkeeping.dao\IBaseDao.cs" />
+    <Compile Include="kyrosoft.bookkeeping.dao\IClientDao.cs" />
+    <Compile Include="kyrosoft.bookkeeping.dao\IExpenseCategoryDao.cs" />
+    <Compile Include="kyrosoft.bookkeeping.dao\IExpenseDao.cs" />
+    <Compile Include="kyrosoft.bookkeeping.dao\IIncomeCategoryDao.cs" />
+    <Compile Include="kyrosoft.bookkeeping.dao\IIncomeDao.cs" />
+    <Compile Include="kyrosoft.bookkeeping.dao\IncomeCategoryDao.cs" />
+    <Compile Include="kyrosoft.bookkeeping.dao\IncomeDao.cs" />
+    <Compile Include="kyrosoft.bookkeeping.dao\ITaxCategoryDao.cs" />
     <Compile Include="kyrosoft.bookkeeping.dao\IUserDao.cs" />
+    <Compile Include="kyrosoft.bookkeeping.dao\TaxCategoryDao.cs" />
     <Compile Include="kyrosoft.bookkeeping.dao\UserDao.cs" />
     <Compile Include="kyrosoft.bookkeeping.entity.test\ClientTest.cs" />
     <Compile Include="kyrosoft.bookkeeping.entity.test\ExpenseCategoryTest.cs" />
@@ -135,7 +157,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -159,7 +183,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="schema.sql" />
+    <Content Include="clean.sql" />
+    <Content Include="test_data.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

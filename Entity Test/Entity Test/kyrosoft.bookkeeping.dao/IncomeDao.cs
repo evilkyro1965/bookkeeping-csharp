@@ -9,12 +9,13 @@ using System.Data.Entity;
 
 namespace kyrosoft.bookkeeping.dao
 {
-    public class UserDao : BaseDao<User>,IUserDao
+    public class IncomeDao : BaseDao<Income>, IIncomeDao
     {
-        public void create(User user)
+        public void create(Income income)
         {
-            try { 
-                daoContext.Users.Add(user);
+            try
+            {
+                daoContext.Incomes.Add(income);
                 daoContext.SaveChanges();
             }
             catch (SqlException e)
@@ -23,11 +24,11 @@ namespace kyrosoft.bookkeeping.dao
             }
         }
 
-        public void update(User user)
+        public void update(Income income)
         {
             try
             {
-                var entry = daoContext.Entry(user);
+                var entry = daoContext.Entry<Income>(income);
                 entry.State = EntityState.Modified;
                 daoContext.SaveChanges();
             }
@@ -43,10 +44,10 @@ namespace kyrosoft.bookkeeping.dao
             {
                 for (int i = 0; i < ids.Length; i++)
                 {
-                    User user = daoContext.Users.Find(ids[i]);
-                    if(user==null)
-                        throw new Exception("User with id:"+ids[i]+" is not found!");
-                    daoContext.Users.Remove(user);
+                    Income income = daoContext.Incomes.Find(ids[i]);
+                    if (income == null)
+                        throw new Exception("Income with id:" + ids[i] + " is not found!");
+                    daoContext.Incomes.Remove(income);
                     daoContext.SaveChanges();
                 }
             }
@@ -56,12 +57,12 @@ namespace kyrosoft.bookkeeping.dao
             }
         }
 
-        public User get(int id)
+        public Income get(int id)
         {
             try
             {
-                User user = daoContext.Users.Find(id);
-                return user;
+                Income income = daoContext.Incomes.Find(id);
+                return income;
             }
             catch (SqlException e)
             {

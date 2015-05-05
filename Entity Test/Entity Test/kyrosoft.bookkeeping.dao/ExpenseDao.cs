@@ -7,14 +7,16 @@ using kyrosoft.bookkeeping.entity;
 using System.Data.SqlClient;
 using System.Data.Entity;
 
+
 namespace kyrosoft.bookkeeping.dao
 {
-    public class UserDao : BaseDao<User>,IUserDao
+    public class ExpenseDao:BaseDao<Expense>,IExpenseDao
     {
-        public void create(User user)
+        public void create(Expense expense)
         {
-            try { 
-                daoContext.Users.Add(user);
+            try
+            {
+                daoContext.Expenses.Add(expense);
                 daoContext.SaveChanges();
             }
             catch (SqlException e)
@@ -23,11 +25,11 @@ namespace kyrosoft.bookkeeping.dao
             }
         }
 
-        public void update(User user)
+        public void update(Expense expense)
         {
             try
             {
-                var entry = daoContext.Entry(user);
+                var entry = daoContext.Entry<Expense>(expense);
                 entry.State = EntityState.Modified;
                 daoContext.SaveChanges();
             }
@@ -43,10 +45,10 @@ namespace kyrosoft.bookkeeping.dao
             {
                 for (int i = 0; i < ids.Length; i++)
                 {
-                    User user = daoContext.Users.Find(ids[i]);
-                    if(user==null)
-                        throw new Exception("User with id:"+ids[i]+" is not found!");
-                    daoContext.Users.Remove(user);
+                    Expense expense = daoContext.Expenses.Find(ids[i]);
+                    if (expense == null)
+                        throw new Exception("Expense with id:" + ids[i] + " is not found!");
+                    daoContext.Expenses.Remove(expense);
                     daoContext.SaveChanges();
                 }
             }
@@ -56,12 +58,12 @@ namespace kyrosoft.bookkeeping.dao
             }
         }
 
-        public User get(int id)
+        public Expense get(int id)
         {
             try
             {
-                User user = daoContext.Users.Find(id);
-                return user;
+                Expense expense = daoContext.Expenses.Find(id);
+                return expense;
             }
             catch (SqlException e)
             {

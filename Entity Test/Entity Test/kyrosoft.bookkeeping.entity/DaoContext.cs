@@ -7,7 +7,7 @@ using System.Data.Entity;
 
 namespace kyrosoft.bookkeeping.entity
 {
-    public class DaoContext:DbContext
+    public class DaoContext : DbContext
     {
         public DaoContext() : base(nameOrConnectionString: "bookkeeping") { }
 
@@ -24,12 +24,12 @@ namespace kyrosoft.bookkeeping.entity
         {
             modelBuilder.Entity<Client>()
                 .HasOptional<User>(c => c.user)
-                .WithOptionalDependent() 
+                .WithMany()
                 .Map(m => m.MapKey("userId"));
 
             modelBuilder.Entity<Client>()
                 .HasOptional<Country>(c => c.country)
-                .WithOptionalDependent()
+                .WithMany()
                 .Map(m => m.MapKey("countryId"));
 
             modelBuilder.Entity<Client>()

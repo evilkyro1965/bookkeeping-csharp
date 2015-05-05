@@ -17,60 +17,61 @@ using MySql.Data.MySqlClient;
 namespace kyrosoft.bookkeeping.dao.test
 {
     [TestFixture]
-    class UserDaoTest
+    class UserDaoTest:BaseTest
     {
         protected UserDao userDao;
 
         [SetUp]
         public void setup()
         {
+            IUnityContainer container = new UnityContainer();
+            DaoContext daoContext = new DaoContext();
             userDao = new UserDao();
+            userDao.daoContext = daoContext;
             setupDB();
         }
-
-        public void setupDB()
-        {
-            var connectionString = ConfigurationManager.ConnectionStrings["bookkeeping"].ConnectionString;
-            try
-            {
-                using (var conn = new MySqlConnection(connectionString))
-                {
-                    conn.Open();
-                    string[] schemaSql = getDBSchemaSql();
-                    String queryStr = "";
-                    for (int i = 0; i < schemaSql.Length; i++) 
-                    {
-                        MySqlCommand command = new MySqlCommand(schemaSql[i], conn);
-                        command.ExecuteNonQuery();
-                    }
-                    
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
-
-        public string[] getDBSchemaSql()
-        {
-            string path = Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName, "schema.sql");
-
-            string[] lines = System.IO.File.ReadAllLines(path);
-            return lines;
-        }
-
 
         [Test]
         public void createUser()
         {
-            /*
             User user = new User();
             user.username = "john.doe";
             user.password = "12345";
             userDao.create(user);
-            */
+            Assert.AreNotEqual(0, user.id);
         }
+
+        [Test]
+        public void updateUser()
+        {
+            User user = userDao.get(1);
+            user.username = "test";
+            user.password = "test";
+            userDao.update(user);
+
+            User temp = userDao.get(1);
+            Assert.AreEqual("test", temp.username);
+            Assert.AreEqual("test", temp.password);
+        }
+
+        [Test]
+        public void deleteUser()
+        {
+            User user = new User();
+            user.username = "test";
+            user.password = "12345";
+            userDao.create(user);
+
+            int[] deleteIds = new int[] { user.id };
+            userDao.delete(deleteIds);
+
+            User temp = userDao.get(user.id);
+            Assert.IsNull(temp);
+        }
+
+
+
+
 
     }
 }

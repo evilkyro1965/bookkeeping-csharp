@@ -9,12 +9,13 @@ using System.Data.Entity;
 
 namespace kyrosoft.bookkeeping.dao
 {
-    public class UserDao : BaseDao<User>,IUserDao
+    public class ClientDao:BaseDao<Client>,IClientDao
     {
-        public void create(User user)
+        public void create(Client client)
         {
-            try { 
-                daoContext.Users.Add(user);
+            try
+            {
+                daoContext.Clients.Add(client);
                 daoContext.SaveChanges();
             }
             catch (SqlException e)
@@ -23,11 +24,11 @@ namespace kyrosoft.bookkeeping.dao
             }
         }
 
-        public void update(User user)
+        public void update(Client client)
         {
             try
             {
-                var entry = daoContext.Entry(user);
+                var entry = daoContext.Entry<Client>(client);
                 entry.State = EntityState.Modified;
                 daoContext.SaveChanges();
             }
@@ -43,10 +44,10 @@ namespace kyrosoft.bookkeeping.dao
             {
                 for (int i = 0; i < ids.Length; i++)
                 {
-                    User user = daoContext.Users.Find(ids[i]);
-                    if(user==null)
-                        throw new Exception("User with id:"+ids[i]+" is not found!");
-                    daoContext.Users.Remove(user);
+                    Client client = daoContext.Clients.Find(ids[i]);
+                    if (client == null)
+                        throw new Exception("Client with id:" + ids[i] + " is not found!");
+                    daoContext.Clients.Remove(client);
                     daoContext.SaveChanges();
                 }
             }
@@ -56,12 +57,12 @@ namespace kyrosoft.bookkeeping.dao
             }
         }
 
-        public User get(int id)
+        public Client get(int id)
         {
             try
             {
-                User user = daoContext.Users.Find(id);
-                return user;
+                Client client = daoContext.Clients.Find(id);
+                return client;
             }
             catch (SqlException e)
             {

@@ -11,6 +11,6 @@ namespace kyrosoft.bookkeeping.entity
     public abstract class OwnedEntity:IdentifiableEntity
     {
         [Required]
-        public User user { get; set; }
+        public virtual User user { get; set; }
     }
 }

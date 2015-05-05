@@ -7,15 +7,7 @@ using kyrosoft.bookkeeping.entity;
 
 namespace kyrosoft.bookkeeping.dao
 {
-    public abstract class BaseDao<T>
+    interface IClientDao:IBaseDao<Client>
     {
-        public DaoContext daoContext;
-
-        public BaseDao()
-        {
-            //daoContext = new DaoContext();
-        }
-
-
     }
 }

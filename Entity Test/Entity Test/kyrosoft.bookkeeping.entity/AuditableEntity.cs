@@ -10,13 +10,9 @@ namespace kyrosoft.bookkeeping.entity
 {
     public class AuditableEntity : LookupEntity
     {
-        [Required]
         public string createdBy { get; set; }
-
         public DateTime createdDate { get; set; }
-        [Required]
         public string updatedBy { get; set; }
-
         public DateTime updatedDate { get; set; }
 
     }

@@ -19,6 +19,7 @@ namespace kyrosoft.bookkeeping.entity.test
             contact1.contactName = "John Doe";
             contact1.contactEmail = "john.doe@lorem.com";
             contact1.contactPhone = "01421313";
+            contact1.isPrimary = true;
 
             Client client = new Client();
             User user = context.Users.Find(1);
