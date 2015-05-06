@@ -70,14 +70,5 @@ namespace kyrosoft.bookkeeping.dao.test
         }
 
 
-        [Test]
-        public void searchUser()
-        {
-            SearchResult<User> result = new SearchResult<User>();
-            result = userDao.search(new BaseSearchParameter());
-            int size = result.total;
-        }
-
-
     }
 }

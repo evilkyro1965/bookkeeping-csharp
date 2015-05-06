@@ -69,16 +69,35 @@ namespace kyrosoft.bookkeeping.dao
             }
         }
 
-        public SearchResult<User> search(BaseSearchParameter parameter)
+        public User searchByUsername(String username)
         {
-            var query = from u in daoContext.Users
-                        where u.username == "john.doe"
-                        select u;
+            IQueryable<User> query;
+            query = daoContext.Users;
+            query.Where(u => u.username == username);
+
+            User ret = query.Single<User>();
+            return ret;
+        }
+
+        /*
+        public User searchByUsername(String username)
+        {
+            IQueryable<User> query;
+
+            Dictionary<String, String> filter = parameter.filter;
+            query = daoContext.Users;
+            if (filter.ContainsKey("username"))
+            {
+                query.Where(u => u.username == filter["username"]);
+            }
+
             List<User> result = query.ToList<User>();
             SearchResult<User> ret = new SearchResult<User>();
             ret.result = result;
+
             return ret;
         }
+        */
 
     }
 }

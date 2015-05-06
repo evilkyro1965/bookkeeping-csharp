@@ -1,4 +1,11 @@
 insert  into `user`(`id`,`username`,`password`) values (1,'john.doe','password');
+insert  into `user`(`id`,`username`,`password`) values (2,'john.doe1','password');
+insert  into `user`(`id`,`username`,`password`) values (3,'john.doe2','password');
+insert  into `user`(`id`,`username`,`password`) values (4,'john.doe3','password');
+insert  into `user`(`id`,`username`,`password`) values (5,'john.doe4','password');
+insert  into `user`(`id`,`username`,`password`) values (6,'john.doe5','password');
+insert  into `user`(`id`,`username`,`password`) values (7,'john.doe6','password');
+insert  into `user`(`id`,`username`,`password`) values (8,'john.doe7','password');
 insert  into `tax_category`(`id`,`name`,`createdBy`,`createdDate`,`updatedBy`,`updatedDate`,`isDisabled`,`userId`) values (1,'Tax1','john.doe','2008-03-09 01:02:03','john.doe','2008-03-09 01:02:03','\0',1);
 insert  into `tax_category`(`id`,`name`,`createdBy`,`createdDate`,`updatedBy`,`updatedDate`,`isDisabled`,`userId`) values (2,'Tax2','john.doe','2008-03-09 01:02:03','john.doe','2008-03-09 01:02:03','\0',1);
 insert  into `tax_category`(`id`,`name`,`createdBy`,`createdDate`,`updatedBy`,`updatedDate`,`isDisabled`,`userId`) values (3,'Tax3','john.doe','2008-03-09 01:02:03','john.doe','2008-03-09 01:02:03','\0',1);

@@ -9,7 +9,7 @@ namespace kyrosoft.bookkeeping.entity
     public class BaseSearchParameter
     {
         public Dictionary<string, string> filter { get; set; }
-        public int paging { get; set; }
+        public int pageSize { get; set; }
         public int page { get; set; }
 
         public BaseSearchParameter()

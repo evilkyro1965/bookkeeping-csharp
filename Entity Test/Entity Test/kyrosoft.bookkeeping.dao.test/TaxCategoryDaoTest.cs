@@ -77,5 +77,18 @@ namespace kyrosoft.bookkeeping.dao.test
             Assert.IsNull(temp);
         }
 
+        [Test]
+        public void searchTaxCategory()
+        {
+            BaseSearchParameter searchParam = new BaseSearchParameter();
+            searchParam.pageSize = 2;
+            searchParam.page = 1;
+            Dictionary<String, String> filter = new Dictionary<string, string>();
+            filter.Add("name", "Tax1");
+            searchParam.filter = filter;
+            SearchResult<TaxCategory> searchResult = taxCategoryDao.search(searchParam);
+            int count = searchResult.total;
+        }
+
     }
 }
