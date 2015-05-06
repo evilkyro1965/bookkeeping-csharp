@@ -112,6 +112,7 @@
     <Compile Include="kyrosoft.bookkeeping.dao.test\ExpenseDaoTest.cs" />
     <Compile Include="kyrosoft.bookkeeping.dao.test\IncomeCategoryDaoTest.cs" />
     <Compile Include="kyrosoft.bookkeeping.dao.test\IncomeDaoTest.cs" />
+    <Compile Include="kyrosoft.bookkeeping.dao.test\SearchTest.cs" />
     <Compile Include="kyrosoft.bookkeeping.dao.test\TaxCategoryDaoTest.cs" />
     <Compile Include="kyrosoft.bookkeeping.dao.test\UserDaoTest.cs" />
     <Compile Include="kyrosoft.bookkeeping.dao\BaseDao.cs" />
@@ -137,6 +138,7 @@
     <Compile Include="kyrosoft.bookkeeping.entity.test\IncomeTest.cs" />
     <Compile Include="kyrosoft.bookkeeping.entity.test\TaxCategoryTest.cs" />
     <Compile Include="kyrosoft.bookkeeping.entity\AuditableEntity.cs" />
+    <Compile Include="kyrosoft.bookkeeping.entity\BaseSearchParameter.cs" />
     <Compile Include="kyrosoft.bookkeeping.entity\Client.cs" />
     <Compile Include="kyrosoft.bookkeeping.entity\ClientContact.cs" />
     <Compile Include="kyrosoft.bookkeeping.entity\Country.cs" />
@@ -151,6 +153,7 @@
     <Compile Include="kyrosoft.bookkeeping.entity\IncomeExpenseType.cs" />
     <Compile Include="kyrosoft.bookkeeping.entity\LookupEntity.cs" />
     <Compile Include="kyrosoft.bookkeeping.entity\OwnedEntity.cs" />
+    <Compile Include="kyrosoft.bookkeeping.entity\SearchResult.cs" />
     <Compile Include="kyrosoft.bookkeeping.entity\TaxCategory.cs" />
     <Compile Include="kyrosoft.bookkeeping.entity\User.cs" />
     <Compile Include="Program.cs" />

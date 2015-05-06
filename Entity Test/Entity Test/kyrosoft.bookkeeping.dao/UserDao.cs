@@ -68,5 +68,17 @@ namespace kyrosoft.bookkeeping.dao
                 throw e;
             }
         }
+
+        public SearchResult<User> search(BaseSearchParameter parameter)
+        {
+            var query = from u in daoContext.Users
+                        where u.username == "john.doe"
+                        select u;
+            List<User> result = query.ToList<User>();
+            SearchResult<User> ret = new SearchResult<User>();
+            ret.result = result;
+            return ret;
+        }
+
     }
 }
