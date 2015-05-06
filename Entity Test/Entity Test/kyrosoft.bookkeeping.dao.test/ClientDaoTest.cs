@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using kyrosoft.bookkeeping.entity;
+using kyrosoft.bookkeeping.entity.dto;
 using kyrosoft.bookkeeping.dao;
 using NUnit.Framework;
 using Microsoft.Practices.Unity;
@@ -86,6 +87,19 @@ namespace kyrosoft.bookkeeping.dao.test
 
             Client client = clientDao.get(2);
             Assert.Null(client);
+        }
+
+        [Test]
+        public void searchClient()
+        {
+            ClientSearchParameter searchParam = new ClientSearchParameter();
+            searchParam.pageSize = 10;
+            searchParam.page = 1;
+            searchParam.clientName = "John";
+            searchParam.userId = 1;
+
+            SearchResult<Client> searchResult = clientDao.search(searchParam);
+            List<Client> result = searchResult.result;
         }
 
     }

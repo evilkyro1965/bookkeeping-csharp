@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using kyrosoft.bookkeeping.entity;
+using kyrosoft.bookkeeping.entity.dto;
 using kyrosoft.bookkeeping.dao;
 using NUnit.Framework;
 using Microsoft.Practices.Unity;
@@ -82,6 +83,23 @@ namespace kyrosoft.bookkeeping.dao.test
 
             IncomeCategory incomeCategory = incomeCategoryDao.get(1);
             Assert.Null(incomeCategory);
+        }
+
+        [Test]
+        public void searchIncomeCatByName()
+        {
+            IncomeCategorySearchParameter searchParam = new IncomeCategorySearchParameter();
+            searchParam.pageSize = 2;
+            searchParam.page = 2;
+            searchParam.name = "Income";
+            searchParam.userId = 1;
+            searchParam.isDisabled = false;
+            searchParam.incomeType = IncomeExpenseType.BUSINESS;
+            searchParam.taxCategoryId = 1;
+            SearchResult<IncomeCategory> searchResult = incomeCategoryDao.search(searchParam);
+            List<IncomeCategory> result = searchResult.result;
+            Assert.AreEqual("Income3", result.ElementAt(0).name);
+            Assert.AreEqual("Income4", result.ElementAt(1).name);
         }
 
     }

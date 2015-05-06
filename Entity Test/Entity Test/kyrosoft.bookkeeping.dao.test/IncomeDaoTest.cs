@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using kyrosoft.bookkeeping.entity;
+using kyrosoft.bookkeeping.entity.dto;
 using kyrosoft.bookkeeping.dao;
 using NUnit.Framework;
 using Microsoft.Practices.Unity;
@@ -87,6 +88,20 @@ namespace kyrosoft.bookkeeping.dao.test
 
             Income income = incomeDao.get(1);
             Assert.Null(income);
+        }
+
+        [Test]
+        public void searchIncome()
+        {
+            IncomeSearchParameter searchParam = new IncomeSearchParameter();
+            searchParam.pageSize = 2;
+            searchParam.page = 2;
+            searchParam.name = "Income";
+            searchParam.userId = 1;
+            SearchResult<Income> searchResult = incomeDao.search(searchParam);
+            List<Income> result = searchResult.result;
+            Assert.AreEqual("Income3", result.ElementAt(0).name);
+            Assert.AreEqual("Income4", result.ElementAt(1).name);
         }
 
     }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using kyrosoft.bookkeeping.entity;
+using kyrosoft.bookkeeping.entity.dto;
 using System.Data.SqlClient;
 using System.Data.Entity;
 
@@ -79,25 +80,25 @@ namespace kyrosoft.bookkeeping.dao
             return ret;
         }
 
-        /*
-        public User searchByUsername(String username)
-        {
-            IQueryable<User> query;
 
-            Dictionary<String, String> filter = parameter.filter;
-            query = daoContext.Users;
-            if (filter.ContainsKey("username"))
-            {
-                query.Where(u => u.username == filter["username"]);
-            }
+        public SearchResult<User> searchAll(BaseSearchParameter parameter)
+        {
+            int page = parameter.page;
+            int total = parameter.pageSize;
+
+            IQueryable<User> query;
+            query = daoContext.Users.OrderBy(u=>u.username)
+                .Skip((page - 1) * total)
+                .Take(total);
 
             List<User> result = query.ToList<User>();
             SearchResult<User> ret = new SearchResult<User>();
             ret.result = result;
+            ret.total = result.Count;
+            ret.page = page;
 
             return ret;
         }
-        */
 
     }
 }

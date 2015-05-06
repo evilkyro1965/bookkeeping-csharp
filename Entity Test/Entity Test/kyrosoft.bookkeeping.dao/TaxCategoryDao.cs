@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using kyrosoft.bookkeeping.entity;
+using kyrosoft.bookkeeping.entity.dto;
 using System.Data.SqlClient;
 using System.Data.Entity;
 using System.Linq.Expressions;
@@ -72,38 +73,49 @@ namespace kyrosoft.bookkeeping.dao
             }
         }
 
-        public SearchResult<TaxCategory> search(BaseSearchParameter parameter)
-        {
-            string name = parameter.filter["name"];
-
-            //IQueryable<TaxCategory> query;  
-            Dictionary<String,String> filter = parameter.filter;
-            Expression<Func<TaxCategory, bool>> taxFilter = u => u.name.Contains(name);
-
-            var query3 = daoContext.TaxCategories.Where(taxFilter).OrderBy(u => u.name);
-
+        public SearchResult<TaxCategory> search(TaxCategorySearchParameter parameter)
+        { 
             int page = parameter.page;
             int total = parameter.pageSize;
 
             var predicat = PredicateExtensions.PredicateExtensions.Begin<TaxCategory>();
 
-            if (filter.ContainsKey("name"))
+            if ( parameter.name!=null && parameter.name!="" )
             {
-                //query3.Where(u => u.name.Contains(name));
-                //query.WhereLike(u => u.name, "Tax1*", '*');
-                Expression<Func<TaxCategory, bool>> filterName = u => u.name.Contains(name);
+                string name = parameter.name.ToLower();
+                Expression<Func<TaxCategory, bool>> filterName = t => t.name.ToLower().Contains(name);
                 predicat = predicat.And(filterName);
             }
+            if (parameter.userId!=0)
+            {
+                int userId = parameter.userId;
+                Expression<Func<TaxCategory, bool>> filterUser = t => t.user.id == userId;
+                predicat = predicat.And(filterUser);
+            }
+            if (parameter.isDisabled!=null)
+            {
+                bool isDisabled = parameter.isDisabled;
+                Expression<Func<TaxCategory, bool>> filterDisabled = t => t.isDisabled == isDisabled;
+                predicat = predicat.And(filterDisabled);
+            }
 
-            var query = daoContext.TaxCategories.Where(
-                predicat
-                );
-            List<TaxCategory> result = query.ToList<TaxCategory>();
-            SearchResult<TaxCategory> ret = new SearchResult<TaxCategory>();
-            ret.result = result;
-            ret.total = result.Count;
-            ret.page = page;
+            SearchResult<TaxCategory> ret = null;
+            try { 
+                var query = daoContext.TaxCategories.Where(predicat)
+                    .OrderBy(t => t.name)
+                    .Skip((page-1)*total)
+                    .Take(total);
 
+                List<TaxCategory> result = query.ToList<TaxCategory>();
+                ret = new SearchResult<TaxCategory>();
+                ret.result = result;
+                ret.total = result.Count;
+                ret.page = page;
+            }
+            catch (SqlException e)
+            {
+                throw e;
+            }
             return ret;
         }
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using kyrosoft.bookkeeping.entity;
+using kyrosoft.bookkeeping.entity.dto;
 using kyrosoft.bookkeeping.dao;
 using NUnit.Framework;
 using Microsoft.Practices.Unity;
@@ -82,6 +83,23 @@ namespace kyrosoft.bookkeeping.dao.test
 
             ExpenseCategory expenseCategory = expenseCategoryDao.get(2);
             Assert.Null(expenseCategory);
+        }
+
+        [Test]
+        public void searchExpenseCatByName()
+        {
+            ExpenseCategorySearchParameter searchParam = new ExpenseCategorySearchParameter();
+            searchParam.pageSize = 2;
+            searchParam.page = 2;
+            searchParam.name = "Expense";
+            searchParam.userId = 1;
+            searchParam.isDisabled = false;
+            searchParam.expenseType = IncomeExpenseType.BUSINESS;
+            searchParam.taxCategoryId = 1;
+            SearchResult<ExpenseCategory> searchResult = expenseCategoryDao.search(searchParam);
+            List<ExpenseCategory> result = searchResult.result;
+            Assert.AreEqual("Expense3", result.ElementAt(0).name);
+            Assert.AreEqual("Expense4", result.ElementAt(1).name);
         }
 
     }

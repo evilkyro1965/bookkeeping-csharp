@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using kyrosoft.bookkeeping.entity;
+using kyrosoft.bookkeeping.entity.dto;
 using kyrosoft.bookkeeping.dao;
 using NUnit.Framework;
 using Microsoft.Practices.Unity;
@@ -78,17 +79,33 @@ namespace kyrosoft.bookkeeping.dao.test
         }
 
         [Test]
-        public void searchTaxCategory()
+        public void searchTaxCategoryAll()
         {
-            BaseSearchParameter searchParam = new BaseSearchParameter();
-            searchParam.pageSize = 2;
+            TaxCategorySearchParameter searchParam = new TaxCategorySearchParameter();
+            searchParam.pageSize = 5;
             searchParam.page = 1;
-            Dictionary<String, String> filter = new Dictionary<string, string>();
-            filter.Add("name", "Tax1");
-            searchParam.filter = filter;
+            searchParam.userId = 1;
+            searchParam.isDisabled = false;
             SearchResult<TaxCategory> searchResult = taxCategoryDao.search(searchParam);
-            int count = searchResult.total;
+            List<TaxCategory> result = searchResult.result;
+            Assert.AreEqual(5, result.Count);
         }
+
+        [Test]
+        public void searchTaxByNameCategory()
+        {
+            TaxCategorySearchParameter searchParam = new TaxCategorySearchParameter();
+            searchParam.pageSize = 2;
+            searchParam.page = 2;
+            searchParam.name = "Tax";
+            searchParam.userId = 1;
+            searchParam.isDisabled = false;
+            SearchResult<TaxCategory> searchResult = taxCategoryDao.search(searchParam);
+            List<TaxCategory> result = searchResult.result;
+            Assert.AreEqual("Tax3", result.ElementAt(0).name);
+            Assert.AreEqual("Tax4", result.ElementAt(1).name);
+        }
+
 
     }
 }
