@@ -119,6 +119,5 @@ namespace kyrosoft.bookkeeping.dao
             return ret;
         }
 
-
     }
 }
