@@ -1,0 +1,11 @@
+SET FOREIGN_KEY_CHECKS = 0; 
+TRUNCATE income;
+TRUNCATE expense;
+TRUNCATE income_category;
+TRUNCATE expense_category;
+TRUNCATE tax_category;
+TRUNCATE client_contact;
+TRUNCATE client;
+TRUNCATE country;
+TRUNCATE user;
+SET FOREIGN_KEY_CHECKS = 1; 

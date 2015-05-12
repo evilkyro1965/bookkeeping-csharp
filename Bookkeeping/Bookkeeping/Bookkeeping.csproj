@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7723871A-810D-4467-9425-83B704775EEE}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bookkeeping</RootNamespace>
+    <AssemblyName>Bookkeeping</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MySql.Data.6.9.6\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MySql.Data.Entity.6.9.6\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.core">
+      <HintPath>..\packages\NUnitTestAdapter.2.0.0\lib\nunit.core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="nunit.core.interfaces">
+      <HintPath>..\packages\NUnitTestAdapter.2.0.0\lib\nunit.core.interfaces.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.util">
+      <HintPath>..\packages\NUnitTestAdapter.2.0.0\lib\nunit.util.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="NUnit.VisualStudio.TestAdapter">
+      <HintPath>..\packages\NUnitTestAdapter.2.0.0\lib\NUnit.VisualStudio.TestAdapter.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PredicateExtensions">
+      <HintPath>..\packages\PredicateExtensions.1.0.0\lib\PredicateExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="dao\BaseDao.cs" />
+    <Compile Include="dao\ClientDao.cs" />
+    <Compile Include="dao\ExpenseCategoryDao.cs" />
+    <Compile Include="dao\ExpenseDao.cs" />
+    <Compile Include="dao\IBaseDao.cs" />
+    <Compile Include="dao\IClientDao.cs" />
+    <Compile Include="dao\IExpenseCategoryDao.cs" />
+    <Compile Include="dao\IExpenseDao.cs" />
+    <Compile Include="dao\IIncomeCategoryDao.cs" />
+    <Compile Include="dao\IIncomeDao.cs" />
+    <Compile Include="dao\IncomeCategoryDao.cs" />
+    <Compile Include="dao\IncomeDao.cs" />
+    <Compile Include="dao\ITaxCategoryDao.cs" />
+    <Compile Include="dao\IUserDao.cs" />
+    <Compile Include="dao\TaxCategoryDao.cs" />
+    <Compile Include="dao\UserDao.cs" />
+    <Compile Include="dao_test\BaseTest.cs" />
+    <Compile Include="dao_test\ClientDaoTest.cs" />
+    <Compile Include="dao_test\ExpenseCategoryDaoTest.cs" />
+    <Compile Include="dao_test\ExpenseDaoTest.cs" />
+    <Compile Include="dao_test\IncomeCategoryDaoTest.cs" />
+    <Compile Include="dao_test\IncomeDaoTest.cs" />
+    <Compile Include="dao_test\SearchTest.cs" />
+    <Compile Include="dao_test\TaxCategoryDaoTest.cs" />
+    <Compile Include="dao_test\UserDaoTest.cs" />
+    <Compile Include="entity\AuditableEntity.cs" />
+    <Compile Include="entity\Client.cs" />
+    <Compile Include="entity\ClientContact.cs" />
+    <Compile Include="entity\Country.cs" />
+    <Compile Include="entity\DaoContext.cs" />
+    <Compile Include="entity\DisableEntity.cs" />
+    <Compile Include="entity\dto\BaseSearchParameter.cs" />
+    <Compile Include="entity\dto\ClientSearchParameter.cs" />
+    <Compile Include="entity\dto\ExpenseCategorySearchParameter.cs" />
+    <Compile Include="entity\dto\ExpenseSearchParameter.cs" />
+    <Compile Include="entity\dto\IncomeCategorySearchParameter.cs" />
+    <Compile Include="entity\dto\IncomeSearchParameter.cs" />
+    <Compile Include="entity\dto\TaxCategorySearchParameter.cs" />
+    <Compile Include="entity\Expense.cs" />
+    <Compile Include="entity\ExpenseCategory.cs" />
+    <Compile Include="entity\IdentifiableEntity.cs" />
+    <Compile Include="entity\Income.cs" />
+    <Compile Include="entity\IncomeCategory.cs" />
+    <Compile Include="entity\IncomeExpenseType.cs" />
+    <Compile Include="entity\LookupEntity.cs" />
+    <Compile Include="entity\OwnedEntity.cs" />
+    <Compile Include="entity\SearchResult.cs" />
+    <Compile Include="entity\TaxCategory.cs" />
+    <Compile Include="entity\User.cs" />
+    <Compile Include="entity_test\ClientTest.cs" />
+    <Compile Include="entity_test\ExpenseCategoryTest.cs" />
+    <Compile Include="entity_test\ExpenseTest.cs" />
+    <Compile Include="entity_test\IncomeCategoryTest.cs" />
+    <Compile Include="entity_test\IncomeTest.cs" />
+    <Compile Include="entity_test\TaxCategoryTest.cs" />
+    <Compile Include="entity_test\UserTest.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="LICENSE.md" />
+    <None Include="packages.config" />
+    <None Include="readme.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="clean.sql" />
+    <Content Include="test_data.sql" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
